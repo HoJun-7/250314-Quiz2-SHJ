@@ -6,23 +6,27 @@ from sklearn.model_selection import train_test_split
 dataset = np.random.random([40,4]) 
 
 # 1. dataset의 0번부터 2번 column 인덱스까지의 배열을 feature로 저장합니다.
-feature = None
+feature = dataset[:, 0:2]
+#print(feature)
+
 # 2. dataset의 마지막 column 인덱스의 column 벡터를 label로 저장합니다.
-label = None
+label = dataset[:, -1]
+#print(label)
 
 # 전체 데이터를 학습 데이터와 검증 데이터로 나눕니다.
 # 3. 테스트용 데이터의 크기를 0.25로 하여 전체 데이터를 분리합니다.random_state는 121을 입력합니다.
-X_train, X_test, Y_train, Y_test = None
+X_train, X_test, Y_train, Y_test = train_test_split(feature, label, shuffle=True ,test_size=0.25, random_state=121)
 
 # 분리된 데이터의 크기들을 출력
 print("Case 1.")
+
 print("X_train shape : {}".format(X_train.shape))
 print("X_test shape : {}".format(X_test.shape))
 print("Y_train shape : {}".format(Y_train.shape))
 print("Y_test shape : {}".format(Y_test.shape))
 
 # 4. shuffle을 하지 않고 test_size를 0.3으로 하여 학습용 데이터와 테스트용 데이터를 분리합니다. random_state는 121을 입력합니다.
-X_train_2, X_test_2, Y_train_2, Y_test_2 = None
+X_train_2, X_test_2, Y_train_2, Y_test_2 = train_test_split(feature, label, shuffle=False ,test_size=0.3, random_state=121)
 
 # 분리된 데이터의 크기들을 출력
 print("\nCase 2.")

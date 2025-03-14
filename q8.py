@@ -11,13 +11,13 @@ def load_csv(path: str) -> pd.DataFrame:
 
 def cvt_to_datetime(df: pd.DataFrame) -> pd.DataFrame:
     """df의 DateTime 칼럼을 datetime 형태로 변환합니다."""
-    df["DateTime"] = None
+    df["DateTime"] = pd.to_datetime(df['DateTime'])
     return df
 
 
 def add_dayofweek(df: pd.DataFrame) -> pd.DataFrame:
     """df에 DateTime 칼럼의 요일이 저장된 "요일" 칼럼을 새로 추가합니다."""
-    df["요일"] = None
+    df["요일"] = df['DateTime'].dt.weekday.map(WEEK_KOR)
     df["요일"] = None
     return df
 
@@ -34,7 +34,6 @@ def main():
 
     # 데이터 불러오기
     df = load_csv(data_path)
-
     # 1. DateTime 칼럼을 datetime 형태로 변환
     df = cvt_to_datetime(df)
     print(df)

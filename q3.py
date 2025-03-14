@@ -16,12 +16,12 @@ print("누락된 데이터(Missing Data)를 제거하기 전의 데이터 정보
 df.info()
 
 # df에서 "Unnamed: 0" 컬럼을 제거하고 del_un_df에 저장합니다.
-del_un_df = None
+del_un_df = df.drop(columns=['Unnamed: 0'])
 
 # del_un_df에서 "id" 컬럼을 제거하고 del_un_id_df에 저장합니다.
-del_un_id_df = None
+del_un_id_df = del_un_df.drop(columns=['id'])
 
 # del_un_id_df의 결측치가 포함된 행을 제거하고 removed_df에 저장합니다.
-removed_df = None
+removed_df = del_un_id_df.dropna() 
 print("\n결측치(Missing Data)를 제거한 후의 데이터 정보")
 removed_df.info()

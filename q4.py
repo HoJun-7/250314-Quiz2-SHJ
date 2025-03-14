@@ -28,7 +28,9 @@ def get_negative_index(list_data):
     for i, value in enumerate(list_data):
         # 음수값이 있으면 그 위치(인덱스)들을 neg_idx로 추가시킵니다.
         # value값이 음수일 때 해당하는 인덱스 i를 리스트 neg_idx에 append하세요.
-        None
+        if value < 0:
+            neg_idx.append(list_data.index[i]) 
+            
         
     return neg_idx
 
@@ -51,7 +53,8 @@ def outlier_index():
         # 타는 곳(pickup_longitude,pickup_latitude)과 내리는 곳(drop_longitude, drop_latitude)이
         # 같은 데이터의 인덱스를 idx_zero_distance에 저장합니다.
         # x와 _x가, y가 y_y와 같을 때 해당하는 인덱스 i를 idx_zero_distance에 append하세요.
-        None
+        if (x == _x) and (y == _y):
+            idx_zero_distance.append(i)
     
     # 제거해야하는 인덱스의 리스트들(idx_fare_amount,idx_passenger_count,idx_zero_distance)
     # 간의 중복을 없앤 리스트를 만들어줍니다.
@@ -61,7 +64,7 @@ def outlier_index():
 
 # 3.인덱스를 기반으로 DataFrame 내의 데이터를 제거하고, 제거된 DataFrame을 반환하는 함수를 만듭니다.
 def remove_outlier(dataframe, list_idx):
-    return dataframe.None
+    return dataframe.drop(list_idx)
 
 # del_missing 함수로 결측치를 처리하여 df에 저장합니다.
 df = del_missing(df)
