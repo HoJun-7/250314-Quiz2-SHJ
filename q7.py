@@ -78,8 +78,10 @@ dropoff_latitude = df['dropoff_latitude']
 remove_index = outlier_index()
 df = remove_outlier(df, remove_index)
 
+df.info()
+
 # 2. df.corr()을 사용하여 상관 계수 값 계산
-corr_df = df.corr()
+corr_df = df.corr(numeric_only=True)
 
 # seaborn을 사용하여 heatmap 출력
 plt.figure(figsize=(15,10))

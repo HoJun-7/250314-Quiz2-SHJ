@@ -13,9 +13,13 @@ def get_data() -> pd.DataFrame:
 
 def add_type(df: pd.DataFrame) -> pd.DataFrame:
     "지시사항에 따라 df에 Type칼럼을 추가하고 반환합니다."
-
-    df['Type'] = 'Unknown'
-
+    
+    df['Type'] = 'unknown'
+    
+    df.loc[df['Age'] >= 19, 'Type'] = 'adult'
+    df.loc[(df['Age'] < 19) & (df['Sex'] == 'male'), 'Type'] = 'boy'
+    df.loc[(df['Age'] < 19) & (df['Sex'] == 'female'), 'Type'] = 'girl'
+    
     return df
 
 
