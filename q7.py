@@ -61,6 +61,7 @@ def remove_outlier(dataframe, list_idx):
 
 # load_csv 함수를 사용하여 데이터를 불러와 df에 저장합니다.
 df = load_csv(DATA_PATH)
+#print(df.head(10))
 df.info()
 # 1-1. del_missing 함수로 df의 결측치을 처리하여 df에 덮어씌웁니다.
 df = del_missing(df)
